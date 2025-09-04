@@ -17,8 +17,15 @@ from openpyxl import load_workbook
 from PIL import Image
 
 # ---------- Setup ----------
-load_dotenv()
-api_key = os.getenv("AZURE_OPENAI_API_KEY")
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+    api_key = os.getenv("AZURE_OPENAI_API_KEY")
+    if not api_key:
+        raise ValueError("API key not in .env")
+except Exception:
+    api_key = st.secrets["AZURE_OPENAI_API_KEY"]
+
 endpoint = "https://openai-mavericks.openai.azure.com/openai/v1/"
 deployment_name = "gpt-4"
 client = OpenAI(base_url=endpoint, api_key=api_key)
