@@ -26,8 +26,8 @@ try:
 except Exception:
     api_key = st.secrets["AZURE_OPENAI_API_KEY"]
 
-endpoint = "https://openai-mavericks.openai.azure.com/openai/v1/"
-deployment_name = "gpt-4"
+endpoint = "https://openai-mavericks-02.openai.azure.com/openai/v1/"
+deployment_name = "gpt-deployment"
 client = OpenAI(base_url=endpoint, api_key=api_key)
 
 st.set_page_config(page_title="Wesco Journal Totals Validator", layout="wide")
